@@ -11,6 +11,7 @@
       </div>
       <button class="addMemoBtn" @click="addMemo">add Memo</button>
       <button class="deleteMemoBtn" v-if="memos.length > 1" @click="deleteMemo">delete memo</button>
+      <button class="saveMemosBtn" @click="saveMemos">save memo</button>
     </div>
     <div class='editorWrapper'>
       <textarea class='markdown' v-model='memos[selectedIndex].markdown'></textarea>
@@ -57,6 +58,10 @@ export default {
         this.selectedIndex--;
       }
     },
+    saveMemos: function() {
+      console.log('hogehoge');
+      firebase.database().ref('memos/' + this.user.uid).set(this.memos);
+    },
   }
 }
 </script>
@@ -90,10 +95,12 @@ export default {
 .addMemoBtn {
 	margin-top: 20px;
 }
-
 .editorWrapper{
 	display: flex;
-	}
+}
+.deleteMemoBtn{
+  margin: 10px;
+}
 .markdown {
 	width: 50%;
 	height: 500px;
