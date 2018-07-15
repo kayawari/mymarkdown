@@ -1,0 +1,42 @@
+.memoListWrapper {
+	width: 19%;
+	float: left;
+	border-top: 1px solid #000;
+}
+.memoList {
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: left;
+	border-bottom: 1px solid #000;
+	
+	&:nth-child(even) {
+		background-color: #ccc;
+	}
+	
+	&[data-selected="true"] {
+		background-color: #ccf;
+	}
+}
+.memoTitle {
+	height: 1.5em;
+	margin: 0;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.addMemoBtn {
+	margin-top: 20px;
+}
+.editorWrapper{
+	display: flex;
+}
+.deleteMemoBtn{
+  margin: 10px;
+}
+.markdown {
+	width: 50%;
+	height: 500px;
+}
+.preview {
+	width: 50%;
+	text-align: left;
+}
