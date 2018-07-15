@@ -59,17 +59,22 @@ export default {
       }
     },
     saveMemos: function() {
-      console.log('hogehoge');
       firebase
         .database()
         .ref('memos/' + this.user.uid)
-        .once('value')
-        .then(result => {
-          if(result.val()){
-            this.memos = result.val();
-          }
-        })
+        .set(this.memos);
     },
+  },
+  created: function() {
+    firebase
+      .database()
+      .ref('memos/' + this.user.uid)
+      .once('value')
+      .then(result => {
+        if(result.val()) {
+          this.memos = result.val();
+        }
+      })
   }
 }
 </script>
