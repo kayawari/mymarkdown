@@ -10,6 +10,7 @@
         <p class="memoTitle">{{ displayTitle(memo.markdown) }}</p>
       </div>
       <button class="addMemoBtn" @click="addMemo">add Memo</button>
+      <button class="deleteMemoBtn" v-if="memos.length > 1" @click="deleteMemo">delete memo</button>
     </div>
     <div class='editorWrapper'>
       <textarea class='markdown' v-model='memos[selectedIndex].markdown'></textarea>
@@ -49,6 +50,12 @@ export default {
     },
     displayTitle: function(text) {
       return text.split(/\n/)[0];
+    },
+    deleteMemo: function(){
+      this.memos.splice(this.selectedIndex, 1);
+      if(this.selectedIndex > 0) {
+        this.selectedIndex--;
+      }
     },
   }
 }
