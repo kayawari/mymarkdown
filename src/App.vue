@@ -1,7 +1,8 @@
 <template>
   <div id='app'>
-    <Home v-if='!isLogin'></Home>
+    <Home v-if='!isLogin && !loading'></Home>
     <Editor v-if='isLogin' :user="userData"></Editor>
+    <p v-if='loading'>loading...</p>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ export default {
       msg: 'Welcome to My Markdown',
       isLogin: false,
       userData: null,
+      loading: true
     }
   },
   components: {
@@ -31,6 +33,7 @@ export default {
         this.isLogin = false;
         this.userData = null;
       };
+      this.loading = false;
     });
   },
 }
