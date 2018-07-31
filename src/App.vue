@@ -1,7 +1,6 @@
 <template>
   <div id='app'>
-    <Home v-if='!isLogin && !loading'></Home>
-    <Editor v-if='isLogin' :user="userData"></Editor>
+    <router-view></router-view>
     <p v-if='loading'>loading...</p>
   </div>
 </template>
